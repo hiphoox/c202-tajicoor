@@ -14,7 +14,7 @@ defmodule LexerTest do
   use ExUnit.Case
   doctest Lexer
 
-###### - Casos validos ######
+###### - Casos validos GENERALES ######
 
   setup_all do
     {:ok,
@@ -261,7 +261,7 @@ defmodule LexerTest do
 
   }end
 
-########### - Pruebas validas semana 1 ###########
+########### - Pruebas validas entrega 1 ###########
 
   test " Return 2", state do
     assert Lexer.lexer_principal([[1, "int "], [1, "main(){"], [2, "return "], [2, "2;"], [3, "}"]], []
@@ -293,7 +293,7 @@ defmodule LexerTest do
   ) == state[:tokens_se]
   end
 
-########### - Pruebas NO validas semana 1 ###########
+########### - Pruebas NO validas entrega 1 ###########
  
   test " Caso erroneo", _state do
     ##expected_result = List.update_at(state[:tokens], 5, fn _ -> {2, :error} end)
@@ -332,3 +332,4 @@ defmodule LexerTest do
     assert Lexer.lexer_principal([[1, "int "], [1, "main("], [1, "{"], [2, "return "], [2, "2;"], [3, "}"]], []
       ) == expected_result
   end
+end

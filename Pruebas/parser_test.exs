@@ -791,7 +791,7 @@ defmodule ParserTest do
     }
   end
 
-  ########## 1er semana - casos validos ########
+  ########## entrega 1 - casos validos ########
 
   test " Retorna 2", state do
     expected_in =
@@ -870,7 +870,7 @@ defmodule ParserTest do
     assert parser_out == state[:tokens]
   end
 
-  ########## 1er semana - casos NO validos ########
+  ########## entrega 1 - casos NO validos ########
 
   test " Falta punto y coma", _state do
     expected_in =
@@ -912,3 +912,4 @@ defmodule ParserTest do
     parser_out = [Parser.funcion_parser(expected_in)]
     assert parser_out == [error: "Linea: 1. Error: se esparaba parentesis que cerrara"]
   end
+end
