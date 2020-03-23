@@ -1,8 +1,0 @@
-{application,pruebaselixir,
-             [{applications,[kernel,stdlib,elixir,logger]},
-              {description,"pruebaselixir"},
-              {modules,['Elixir.Ast','Elixir.Lector','Elixir.Lexer',
-                        'Elixir.Main','Elixir.Parser','Elixir.Prettyprinter',
-                        'Elixir.Pruebaselixir','Elixir.Sanitizer']},
-              {registered,[]},
-              {vsn,"0.1.0"}]}.
