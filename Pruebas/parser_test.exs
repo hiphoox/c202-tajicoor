@@ -1,7 +1,7 @@
 defmodule ParserTest do
   use ExUnit.Case
-  doctest Parser
-  doctest Lexer
+  doctest parser
+  doctest lexer
 
   setup_all do
     {:ok,
