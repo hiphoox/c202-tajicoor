@@ -21,22 +21,23 @@ defmodule CodeGenerator do
 
 
   def create(codigo) do
-    plantilla = 
+    plantilla =
 " .globl main
 main:
  movl    $returnInt, %eax
- ret"
+ ret
+"
     if is_list(codigo) do
-      aux = Enum.map(codigo,fn(elem) -> 
+      aux = Enum.map(codigo,fn(elem) ->
         case elem do
           {:function,"int","main",_,statements} ->
-            Enum.map(statements,fn(state) -> 
+            Enum.map(statements,fn(state) ->
               case state do
                 {:return,{:int,valor}} ->
                   valor = "#{valor}"
                   #IO.puts valor
                   Regex.replace(~r/returnInt/,plantilla,valor)
-                  
+
                 _ ->
                   nil
               end
