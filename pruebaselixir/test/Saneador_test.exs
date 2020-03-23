@@ -1,4 +1,4 @@
-defmodule SanitizerTest do
+defmodule SaneadorTest do
   use ExUnit.Case
   doctest CompilerTAJICOOR
 
