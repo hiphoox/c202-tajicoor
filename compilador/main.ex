@@ -19,6 +19,11 @@ defmodule Main do
   end
 
   def mainCompleto(nombreArchivo) do
+    IO.puts "\n"
+    IO.puts "- - - - - - - - - - - - - - - - - - "
+    IO.puts "- - - - -Compiler TAJICOOR- - - - - "
+    IO.puts "- - - - - - - - - - - - - - - - - - "
+    IO.puts "\n"
     IO.puts "- -\tLeyendo archivo...\t - - "
     archivo = Lector.lectorArchivo(nombreArchivo)
     IO.puts archivo
