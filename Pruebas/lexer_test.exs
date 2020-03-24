@@ -12,7 +12,7 @@
 
 defmodule LexerTest do
   use ExUnit.Case
-  doctest Lexer
+  doctest lexer
 
 ###### - Casos validos GENERALES ######
 
