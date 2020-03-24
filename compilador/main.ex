@@ -1,17 +1,8 @@
 defmodule Main do
   @moduledoc """
+  @test
+  
   Documentation for `Main`.
-  """
-
-  @doc """
-  Modulo para manejar el resto de los modulos
-
-  ## Examples
-
-      #iex> Main.holaMundo()
-      #"Main // Funcion incompleta"
-
-
   """
 
   def holaMundo(nil) do
