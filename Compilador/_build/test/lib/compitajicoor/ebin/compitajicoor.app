@@ -1,0 +1,11 @@
+{application,compitajicoor,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"compitajicoor"},
+              {modules,['Elixir.Ast','Elixir.CodeGenerator',
+                        'Elixir.CompiTajicoor','Elixir.CompiTajicoor.CLI',
+                        'Elixir.Gcc','Elixir.Lector','Elixir.Lexer',
+                        'Elixir.Main','Elixir.Parser','Elixir.Parser2',
+                        'Elixir.Prettyprinter','Elixir.Pruebaselixir',
+                        'Elixir.Sanitizer']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.
