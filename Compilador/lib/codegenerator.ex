@@ -28,7 +28,7 @@ main:
     if is_list(codigo) do
       aux = Enum.reduce(codigo,"",fn(elem,accMain) -> 
         case elem do
-          {:function,"int","main",_,statements} ->
+          {:function,_,_,_,statements} ->
             accMain <> Enum.reduce(statements,"",fn(state,acc) -> 
               case state do
                 {:return,expr} ->
@@ -40,7 +40,7 @@ main:
               end
             end)
           _ ->
-            IO.puts elem
+            #IO.puts elem
             accMain <> "Error en CG"
         end
       end)

@@ -33,13 +33,13 @@ defmodule Main do
     validando = Ast.validar(ast)
     IO.puts validando
     IO.puts "- -\t PrettyPrinting\t - -"
-    Prettyprinter.main(ast)
+    Prettyprinter.main(ast,nombreArchivo,archivo)
     if validando==false do
       IO.puts "- -\t Generador de Codigo\t - -"
       codigo = CodeGenerator.create(ast)
       IO.puts codigo
       IO.puts "- -\t Creador de Ejecutable\t - -"
-      Gcc.exeCreator()
+      Gcc.exeCreator("out")
     else
       IO.puts "Hubo un error en la sintaxis del codigo"
     end

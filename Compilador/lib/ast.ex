@@ -26,7 +26,7 @@ defmodule Ast do
           validar(expr)
         {:int,_valor} ->
           false
-        {:error,_mensaje} -> true
+        {:error,_mensaje,_tok} -> true
         _ -> false
       end
     end
