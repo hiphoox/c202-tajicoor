@@ -68,7 +68,7 @@ defmodule CompiTajicoor do
     #IO.puts listaTokens
     if v do IO.puts "- -\t Limpiando lista de tokens\t - - " end
     listaTokens = Lexer.borrarComentarios2(listaTokens)
-    #IO.puts listaTokens
+    ##IO.puts listaTokens
     if v do IO.puts "- -\t Parser2\t - - " end
     ast=Parser2.main(listaTokens)
     ##IO.puts ast
