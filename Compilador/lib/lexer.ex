@@ -18,7 +18,7 @@ defmodule Lexer do
   """
   def lexer(cadena) do
     #cadena = "#include <stdio.h> int main() {int a=2;float b=2,c=56.3; if(1==1 || 1!=0) {printf(\"Saludos\");} return a;}"
-    Regex.scan(~r/\/\*.*\*\/|\/\/.*\n|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena)
+    Regex.scan(~r/\/\*.*\*\/|\/\/.*\n|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||\<=|\<|\>=|\>|#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena)
   end
 
   def lexer2(cadena) do
@@ -39,11 +39,11 @@ defmodule Lexer do
   end
 
   def regexFunc(cadena) do
-    Regex.scan(~r/\/\*.*\*\/|\/\/.*|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena)
+    Regex.scan(~r/\/\*.*\*\/|\/\/.*|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||\<=|\<|\>=|\>|#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena)
   end
 
   def regexFuncPosition(cadena) do
-    Regex.scan(~r/\/\*.*\*\/|\/\/.*|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena,return: :index)
+    Regex.scan(~r/\/\*.*\*\/|\/\/.*|".*"|int|void|float|double|char|main|struct|break|if|else|long|switch|case|for|while|do|default|const|\(|\)|{|}|\[|\]|;|,|\+=|\+|\-=|\-|\/=|\/|\*=|\*|\%|\~|!=|!|\&\&|\|\||\<=|\<|\>=|\>|#include|==|=|[0-9]+\.[0-9]+|[0-9]+|<"?[[:alnum:]\.]+"?>|[[:alnum:]]+/,cadena,return: :index)
   end
 
   def borrarComentarios(lista) do
