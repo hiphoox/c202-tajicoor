@@ -40,22 +40,54 @@ defmodule Prettyprinter do
         {:opUnario,"logNeg",expr} ->
           IO.puts nivel<>"LOGICAL NEGATION"
           imprimir(expr,nivel<>"  ",nombreArchivo,lineas)
-        {:opBinario,"mult",expr1,expr2} ->
+        {:opBinario,"*",expr1,expr2} ->
           IO.puts nivel<>"MULTIPLICATION"
           imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
           imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
-        {:opBinario,"div",expr1,expr2} ->
+        {:opBinario,"/",expr1,expr2} ->
           IO.puts nivel<>"DIVISION"
           imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
           imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
-        {:opBinario,"add",expr1,expr2} ->
+        {:opBinario,"+",expr1,expr2} ->
           IO.puts nivel<>"ADDITION"
           imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
           imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
-        {:opBinario,"subs",expr1,expr2} ->
+        {:opBinario,"-",expr1,expr2} ->
           IO.puts nivel<>"SUBSTRACTION"
-          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
           imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"<",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL LESS THAN"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,">",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL GREATER THAN"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"<=",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL LESS THAN OR EQUAL"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,">=",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL GREATER THAN OR EQUAL"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"==",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL EQUAL"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"!=",expr1,expr2} ->
+          IO.puts nivel<>"RELATIONAL NOT EQUAL"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"&&",expr1,expr2} ->
+          IO.puts nivel<>"LOGICAL AND"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
+        {:opBinario,"||",expr1,expr2} ->
+          IO.puts nivel<>"LOGICAL OR"
+          imprimir(expr1,nivel<>"  ",nombreArchivo,lineas)
+          imprimir(expr2,nivel<>"  ",nombreArchivo,lineas)
 
         {:function,tipo,id,_param,states} ->
           IO.puts nivel<>"FUN "<>String.upcase(tipo[:content])<>" #{id[:content]}:"
