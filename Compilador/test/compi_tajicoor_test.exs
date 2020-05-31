@@ -227,10 +227,6 @@ defmodule CompiTajicoorTest do
   test "programa 4 no valido de semana 3" do
     assert CompiTajicoor.pruebas("test_files/stage_3/invalid/no_semicolon.c") == :error
   end
-end
- test "programa 4 no valido de semana 3" do
-    assert CompiTajicoor.pruebas("test_files/stage_3/invalid/no_semicolon.c") == :error
-  end
 
 
 
@@ -377,4 +373,3 @@ end
   end
 
 end
-
