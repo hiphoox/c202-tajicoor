@@ -145,6 +145,39 @@ defmodule Parser2 do
     end
   end
 
+  def operadoresBinarios(lista,operadores) do
+    Enum.reduce(lista,{:expresion,[],nil}, fn sig,acc -> 
+      {sigEsperado,lista2,operacion} = acc
+      if (sigEsperado==:expresion) do
+        if operacion==nil do
+          lista2 = lista2++[sig]
+          {:operador,lista2,nil}
+        else
+          {anterior,operador}=operacion
+          if operador in operadores do
+            {:operador,lista2++[{:opBinario,operador,anterior,sig}],nil}
+          end
+        end
+      else
+        if is_map(sig) do
+          if sig[:content] in operadores do
+            ultimoElem = List.last(lista2)
+            lista2 = List.delete_at(lista2,(length lista2)-1)
+            {:expresion,lista2,{ultimoElem,sig[:content]}}
+          else
+            lista2 = lista2++[sig]
+            {:expresion,lista2,nil}
+          end
+        else
+          lista2 = lista2++[sig]
+          {:expresion,lista2,nil}
+        end
+      end
+    end)
+
+  end
+
+
   def declVariables(tokens,lista,tipo) do
     #IO.puts "Entro a declaracion de variables"<>tipo<>"con:"
     #IO.puts tokens
@@ -235,7 +268,7 @@ defmodule Parser2 do
         end 
       else
         if is_map(sig) do
-          if sig[:content] in ["+","-","*","/"] do
+          if sig[:content] in ["+","-","*","/","<",">","<=",">=","==","!=","&&","||"] do
             lista2 = lista2++[sig]
             {:expresion,lista2,nil}
           else
@@ -248,64 +281,22 @@ defmodule Parser2 do
     end)
     
     #Aplica los operadores * y /
-    {:operador,lista,_}=Enum.reduce(lista,{:expresion,[],nil}, fn sig,acc -> 
-      {sigEsperado,lista2,operacion} = acc
-      if (sigEsperado==:expresion) do
-        if operacion==nil do
-          lista2 = lista2++[sig]
-          {:operador,lista2,nil}
-        else
-          {anterior,operador}=operacion
-          case operador do
-            "*" -> {:operador,lista2++[{:opBinario,"mult",anterior,sig}],nil}
-            "/" -> {:operador,lista2++[{:opBinario,"div",anterior,sig}],nil}
-          end
-        end
-      else
-        if is_map(sig) do
-          if sig[:content] in ["*","/"] do
-            ultimoElem = List.last(lista2)
-            lista2 = List.delete_at(lista2,(length lista2)-1)
-            {:expresion,lista2,{ultimoElem,sig[:content]}}
-          else
-            lista2 = lista2++[sig]
-            {:expresion,lista2,nil}
-          end
-        else
-          lista2 = lista2++[sig]
-          {:expresion,lista2,nil}
-        end
-      end
-    end)
+    {:operador,lista,_}=operadoresBinarios(lista,["*","/"])
     
     #Aplica los operadores + y -
-    {:operador,lista,_}=Enum.reduce(lista,{:expresion,[],nil}, fn sig,acc -> 
-      {sigEsperado,lista2,operacion} = acc
-      if (sigEsperado==:expresion) do
-        if operacion==nil do
-          lista2 = lista2++[sig]
-          {:operador,lista2,nil}
-        else
-          {anterior,operador}=operacion
-          case operador do
-            "+" -> {:operador,lista2++[{:opBinario,"add",anterior,sig}],nil}
-            "-" -> {:operador,lista2++[{:opBinario,"subs",sig,anterior}],nil}
-          end
-        end
-      else
-        if is_map(sig) do
-          if sig[:content] in ["+","-"] do
-            ultimoElem = List.last(lista2)
-            lista2 = List.delete_at(lista2,(length lista2)-1)
-            {:expresion,lista2,{ultimoElem,sig[:content]}}
-          else
-            {:operador,[{:error,"Unexpected error reading add and sub operators",nil}],nil}
-          end
-        else
-          {:operador,[{:error,"Unexpected error reading add and sub operators",nil}],nil}
-        end
-      end
-    end)
+    {:operador,lista,_}=operadoresBinarios(lista,["+","-"])
+
+    #Aplica los operadores <, >, <= y >=
+    {:operador,lista,_}=operadoresBinarios(lista,["<",">","<=",">="])
+
+    #Aplica los operadores == y !=
+    {:operador,lista,_}=operadoresBinarios(lista,["==","!="])
+
+    #Aplica los operadores &&
+    {:operador,lista,_}=operadoresBinarios(lista,["&&"])
+
+    #Aplica los operadores ||
+    {:operador,lista,_}=operadoresBinarios(lista,["||"])
 
     {(hd lista),resto}
 
@@ -366,7 +357,7 @@ defmodule Parser2 do
           end
       end
     else
-      if aux[:content] in ["+","-","*","/"] do
+      if aux[:content] in ["+","-","*","/","<",">","<=",">=","==","!=","&&","||"] do
         lista = lista ++ [aux]
         expresion(resto,lista,:expresion)
       else
@@ -417,7 +408,7 @@ defmodule Parser2 do
             if (aux[:content]==";") do
               {{:return,expr},tokens}
             else
-              {:error, "Unexpected token in return statement, expected ';', got '#{aux[:content]}'",aux}
+              {:error, "[] Unexpected token in return statement, expected ';', got '#{aux[:content]}'",aux}
             end
           _ -> {:error, "Unexpected error reading return statement",nil}
         end
