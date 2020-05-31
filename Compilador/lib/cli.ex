@@ -16,3 +16,5 @@ defmodule CompiTajicoor.CLI do
     CompiTajicoor.mainCLI(word,opts[:verbose],opts[:S],opts[:o])
   end
 end
+
+

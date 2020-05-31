@@ -1,4 +1,4 @@
-.globl main
+ .globl main
 main:
   movl $1, %eax
   push %eax
