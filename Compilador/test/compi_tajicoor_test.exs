@@ -228,3 +228,153 @@ defmodule CompiTajicoorTest do
     assert CompiTajicoor.pruebas("test_files/stage_3/invalid/no_semicolon.c") == :error
   end
 end
+ test "programa 4 no valido de semana 3" do
+    assert CompiTajicoor.pruebas("test_files/stage_3/invalid/no_semicolon.c") == :error
+  end
+
+
+
+  test "programa 1 no valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/invalid/missing_first_op.c") == :error
+  end
+
+
+
+  test "programa 2 no valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/invalid/missing_mid_op.c") == :error
+  end
+
+
+
+  test "programa 3 no valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/invalid/missing_second_op.c") == :error
+  end
+
+
+
+  test "programa 4 no valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/invalid/missing_semicolon.c") == :error
+  end
+
+
+
+  test "programa 1 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/and_false.c") == :ok
+  end
+
+
+
+  test "programa 2 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/gt_false.c") == :ok
+  end
+
+
+
+  test "programa 3 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/ne_false.c") == :ok
+  end
+
+
+
+  test "programa 4 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/precedence_4.c") == :ok
+  end
+
+
+
+  test "programa 5 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/and_true.c") == :ok
+  end
+
+
+
+  test "programa 6 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/gt_true.c") == :ok
+  end
+
+
+
+  test "programa 7 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/ne_true.c") == :ok
+  end
+
+
+
+  test "programa 8 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/precedence.c") == :ok
+  end
+
+
+
+  test "programa 9 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/eq_false.c") == :ok
+  end
+
+
+
+  test "programa 10 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/le_false.c") == :ok
+  end
+
+
+
+  test "programa 11 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/or_false.c") == :ok
+  end
+
+
+
+  test "programa 13 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/eq_true.c") == :ok
+  end
+
+
+
+  test "programa 14 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/le_true.c") == :ok
+  end
+
+
+
+  test "programa 15 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/or_true.c") == :ok
+  end
+
+
+
+  test "programa 17 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/ge_false.c") == :ok
+  end
+
+
+
+  test "programa 18 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/lt_false.c") == :ok
+  end
+
+
+
+  test "programa 19 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/precedence_2.c") == :ok
+  end
+
+
+
+  test "programa 21 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/ge_true.c") == :ok
+  end
+
+
+
+  test "programa 22 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/lt_true.c") == :ok
+  end
+
+
+
+  test "programa 23 valido de semana 4" do
+    assert CompiTajicoor.pruebas("test_files/stage_4/valid/precedence_3.c") == :ok
+  end
+
+end
+
