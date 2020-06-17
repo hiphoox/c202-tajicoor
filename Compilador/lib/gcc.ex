@@ -12,7 +12,7 @@ defmodule Gcc do
       #"Limpiando // Funcion incompleta"
 
   require Kernel
-  
+
   """
 
   def hola() do
@@ -24,10 +24,11 @@ defmodule Gcc do
       System.cmd("gcc",["-m32","assembler.s","-o","a.out"])
       IO.puts "Executable 'a.out' created"
     else
-      System.cmd("gcc",["-m32","assembler.s","-o",Kernel.inspect(nombreEjecutable)])
-      IO.puts "Executable '#{nombreEjecutable}' created"
+      nombreEjecutable2 = String.slice(Kernel.inspect(nombreEjecutable),1..String.length(Kernel.inspect(nombreEjecutable))-2)
+      System.cmd("gcc",["-m32","assembler.s","-o",nombreEjecutable2])
+      IO.puts "Executable '#{nombreEjecutable2}' created"
     end
-    
+
   end
 
 end

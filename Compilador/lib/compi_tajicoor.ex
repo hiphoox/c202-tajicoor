@@ -59,6 +59,33 @@ defmodule CompiTajicoor do
     end
   end
 
+  def pruebaSalida(nombreArchivo) do
+    IO.puts "\n\n# # # # # # # # # # #"
+    IO.puts "Reading file #{nombreArchivo}"
+    archivo = Lector.lectorArchivo(nombreArchivo)
+    #IO.puts archivo
+    listaTokens = Lexer.lexer2(archivo)
+    listaTokens = Lexer.borrarComentarios2(listaTokens)
+    ast=Parser2.main(listaTokens)
+    ##IO.puts ast
+    if (Ast.validar(ast)==false) do
+      _codigo = CodeGenerator.create(ast)
+      Gcc.exeCreator("a.out")
+      System.cmd("gcc",[nombreArchivo,"-o","b.out"])
+      IO.puts "Executable 'b.out' created"
+      :timer.sleep(1000)
+      iguales = "./a.out;echo $?" |> String.to_charlist |> :os.cmd == "./b.out;echo $?" |> String.to_charlist |> :os.cmd
+      if iguales do
+        :ok
+      else
+        :error
+      end
+    else
+      Prettyprinter.main(ast,nombreArchivo,archivo)
+      :error
+    end
+  end
+
   def mainCLI(nombreArchivo,v,_s,nombreEjecutable) do
     if v do IO.puts "- -\tLeyendo archivo...\t - - " end
     archivo = Lector.lectorArchivo(nombreArchivo)
